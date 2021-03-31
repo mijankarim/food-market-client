@@ -7,7 +7,8 @@ import { faUser } from "@fortawesome/free-solid-svg-icons";
 
 const Header = () => {
   const [loggedInUser] = useContext(UserContext);
-  const { name, email } = loggedInUser;
+  const { userName, email } = loggedInUser;
+ 
   return (
     <div>
       <Container className="mb-5 py-4">
@@ -26,7 +27,7 @@ const Header = () => {
                   <Link to="/login" className="city-btn border-radius-2">
                     {loggedInUser.email ? (
                       <>
-                        <FontAwesomeIcon icon={faUser} /> {name || email}
+                        <FontAwesomeIcon icon={faUser} /> {userName || email}
                       </>
                     ) : (
                       " Login"

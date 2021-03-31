@@ -7,6 +7,7 @@ import Header from "./components/Header/Header";
 import Home from "./components/Home/Home";
 import Orders from "./components/Orders/Orders";
 import Admin from "./components/Admin/Admin";
+import Checkout from "./components/Checkout/Checkout";
 
 export const UserContext = createContext();
 
@@ -28,10 +29,15 @@ function App() {
           <Route path="/admin">
             <Admin />
           </Route>
+          
+          <PrivateRoute path="/checkout/:id">
+            <Checkout />
+          </PrivateRoute>
 
           <PrivateRoute path="/orders">
             <Orders />
           </PrivateRoute>
+
         </Switch>
       </Router>
     </UserContext.Provider>
