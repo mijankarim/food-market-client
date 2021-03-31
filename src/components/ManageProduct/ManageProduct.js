@@ -5,13 +5,13 @@ import { Container, Row, Col, Table, Button } from "react-bootstrap";
 const ManageProduct = () => {
   const [products, setProducts] = useState([]);
   useEffect(() => {
-    fetch("http://localhost:5050/products")
+    fetch("https://quiet-castle-44905.herokuapp.com/products")
       .then((res) => res.json())
       .then((data) => setProducts(data));
   }, []);
 
   const handleDelete = (id) => {
-    fetch(`http://localhost:5050/delete/${id}`, {
+    fetch(`https://quiet-castle-44905.herokuapp.com/delete/${id}`, {
       method: "DELETE",
       headers: {
         "content-type": "application/json",

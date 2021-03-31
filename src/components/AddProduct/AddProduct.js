@@ -28,7 +28,7 @@ const AddProduct = () => {
       price: data.productPrice,
       photo: imageURL,
     };
-    const url = `http://localhost:5050/addProduct`;
+    const url = `https://quiet-castle-44905.herokuapp.com/addProduct`;
     fetch(url, {
       method: "POST",
       headers: {

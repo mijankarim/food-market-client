@@ -19,7 +19,7 @@ const Checkout = () => {
   const handleCheckout = () => {
     const orderDetails = { ...loggedInUser, ...product, orderTime: new Date() };
     console.log("order details", orderDetails)
-    fetch("http://localhost:5050/addOrder", {
+    fetch("https://quiet-castle-44905.herokuapp.com/addOrder", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
