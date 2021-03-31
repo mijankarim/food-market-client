@@ -8,6 +8,8 @@ import Home from "./components/Home/Home";
 import Orders from "./components/Orders/Orders";
 import Admin from "./components/Admin/Admin";
 import Checkout from "./components/Checkout/Checkout";
+import AddProduct from "./components/AddProduct/AddProduct";
+import ManageProduct from "./components/ManageProduct/ManageProduct";
 
 export const UserContext = createContext();
 
@@ -29,6 +31,7 @@ function App() {
           <Route path="/admin">
             <Admin />
           </Route>
+
           
           <PrivateRoute path="/checkout/:id">
             <Checkout />
