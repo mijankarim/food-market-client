@@ -8,6 +8,7 @@ const Checkout = () => {
   const { id } = useParams();
   const [product, setProduct] = useState({});
   const [isLoading, setIsLoading] = useState(true);
+  const [success, setSuccess] = useState(false);
 
   useEffect(() => {
     fetch(`https://quiet-castle-44905.herokuapp.com/product/${id}`)
@@ -33,7 +34,7 @@ const Checkout = () => {
       .then((res) => res.json())
       .then((data) => {
         if (data) {
-          alert("Order successful");
+          setSuccess(true);
         }
       });
   };
@@ -84,6 +85,7 @@ const Checkout = () => {
               <Button className="food-btn float-right" onClick={handleCheckout}>
                 Checkout
               </Button>
+              {success && <h4 className='text-success w-100 text-center mt-5'>You Ordered Successfully.</h4>}
             </Col>
           </Row>
         </>

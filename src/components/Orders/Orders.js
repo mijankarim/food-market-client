@@ -35,22 +35,28 @@ const Orders = () => {
       ) : (
         <Row>
           <Col>
-            <Table striped bordered hover>
-              <thead>
-                <tr>
-                  <th>Order No.</th>
-                  <th>Product Name</th>
-                  <th>Weight(gm)</th>
-                  <th>Order Time</th>
-                  <th>Price</th>
-                </tr>
-              </thead>
-              <tbody>
-                {orders.map((order, index) => (
-                  <Order order={order} key={index} index={index} />
-                ))}
-              </tbody>
-            </Table>
+            {orders.length === 0 ? (
+              <div className="text-dark text-center w-100 py-5">
+                <h3>No Orders Found</h3>
+              </div>
+            ) : (
+              <Table striped bordered hover>
+                <thead>
+                  <tr>
+                    <th>Order No.</th>
+                    <th>Product Name</th>
+                    <th>Weight(gm)</th>
+                    <th>Order Time</th>
+                    <th>Price</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {orders.map((order, index) => (
+                    <Order order={order} key={index} index={index} />
+                  ))}
+                </tbody>
+              </Table>
+            )}
           </Col>
         </Row>
       )}

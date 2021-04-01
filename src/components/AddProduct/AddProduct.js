@@ -7,6 +7,7 @@ import { Container, Row, Col, Button } from "react-bootstrap";
 const AddProduct = () => {
   const { register, handleSubmit, errors } = useForm();
   const [imageURL, setImageURL] = useState(null);
+  const [success, setSuccess] = useState(false);
 
   const handleImageUpload = (e) => {
     const imageData = new FormData();
@@ -22,7 +23,8 @@ const AddProduct = () => {
       });
   };
 
-  const onSubmit = (data) => {
+  const onSubmit = (data, e) => {
+    e.target.reset();
     const productData = {
       name: data.productName,
       weight: data.productWeight,
@@ -37,7 +39,9 @@ const AddProduct = () => {
       },
       body: JSON.stringify(productData),
     }).then((res) => {
-      console.log("server response", res);
+      if(res.ok){
+        setSuccess(true)
+      }
     });
   };
 
@@ -56,6 +60,7 @@ const AddProduct = () => {
                 placeholder="Product Name"
                 ref={register({ required: true })}
               />
+               {errors.productName && <span>This field is required</span>}
             </Col>
             <Col>
               <label>Weight(gm)</label>
@@ -66,6 +71,7 @@ const AddProduct = () => {
                 placeholder="200"
                 ref={register}
               />
+              {errors.productWeight && <span>This field is required</span>}
             </Col>
           </Row>
           <Row>
@@ -78,6 +84,7 @@ const AddProduct = () => {
                 placeholder="20"
                 ref={register({ required: true })}
               />
+              {errors.productPrice && <span>This field is required</span>}
             </Col>
             <Col>
               <label>Upload Photo</label>
@@ -89,10 +96,11 @@ const AddProduct = () => {
                 onChange={handleImageUpload}
                 ref={register({ required: true })}
               />
-              {errors.exampleRequired && <span>This field is required</span>}
+              {errors.productPhoto && <span>This field is required</span>}
             </Col>
           </Row>
           <Button className="float-right my-3 food-btn" type="submit">Save</Button>
+          {success && <h4 className='text-success w-100 text-center mt-5'>Product saved Successfully.</h4>}
         </Container> 
       </form>
     </>
