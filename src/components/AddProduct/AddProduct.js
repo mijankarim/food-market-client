@@ -2,6 +2,7 @@ import axios from "axios";
 import React from "react";
 import { useState } from "react";
 import { useForm } from "react-hook-form";
+import { Container, Row, Col, Button } from "react-bootstrap";
 
 const AddProduct = () => {
   const { register, handleSubmit, watch, errors } = useForm();
@@ -41,47 +42,60 @@ const AddProduct = () => {
   };
 
   return (
-    <div className="text-center">
-      <h2>Add Product</h2>
+    <>  
       <form onSubmit={handleSubmit(onSubmit)}>
-        <p>
-          <label>Product Name</label>
-          <br />
-          <input
-            name="productName"
-            defaultValue="Rice"
-            ref={register({ required: true })}
-          />
-        </p>
-        <p>
-          <label>Weight</label>
-          <br />
-          <input name="productWeight" defaultValue="200" ref={register} />
-        </p>
-        <p>
-          <label>Add Price</label>
-          <br />
-          <input
-            name="productPrice"
-            defaultValue="Rice"
-            ref={register({ required: true })}
-          />
-        </p>
-        <p>
-          <label>Upload Photo</label>
-          <br />
-          <input
-            name="productPhoto"
-            type="file"
-            onChange={handleImageUpload}
-            ref={register({ required: true })}
-          />
-          {errors.exampleRequired && <span>This field is required</span>}
-        </p>
-
-        <input type="submit" />
+        <Container className="">
+        <Row><h3 className="mb-3 ml-3">Add Product</h3></Row>
+          <Row className="mb-3">
+            <Col>
+              <label>Product Name</label>
+              <br />
+              <input
+                className="form-control"
+                name="productName"
+                placeholder="Product Name"
+                ref={register({ required: true })}
+              />
+            </Col>
+            <Col>
+              <label>Weight(gm)</label>
+              <br />
+              <input
+                className="form-control"
+                name="productWeight"
+                placeholder="200"
+                ref={register}
+              />
+            </Col>
+          </Row>
+          <Row>
+            <Col>
+              <label>Add Price</label>
+              <br />
+              <input
+                className="form-control"
+                name="productPrice"
+                placeholder="20"
+                ref={register({ required: true })}
+              />
+            </Col>
+            <Col>
+              <label>Upload Photo</label>
+              <br />
+              <input
+                class="form-control"
+                name="productPhoto"
+                type="file"
+                onChange={handleImageUpload}
+                ref={register({ required: true })}
+              />
+              {errors.exampleRequired && <span>This field is required</span>}
+            </Col>
+          </Row>
+          <Button className="float-right my-3 food-btn" type="submit">Save</Button>
+        </Container> 
       </form>
-    </div>
+    </>
   );
 };
 

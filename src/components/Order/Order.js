@@ -1,5 +1,4 @@
 import React from "react";
-import { Table, Row, Col } from "react-bootstrap";
 
 const Order = (props) => {
     const {name, price, orderTime, weight} = props.order;

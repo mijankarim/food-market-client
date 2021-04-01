@@ -12,13 +12,11 @@ if (firebase.apps.length === 0) {
 }
 
 const Login = () => {
-  const [newUser, SetNewUser] = useState(false);
   
   const [user, setUser] = useState({
     isSignedIn: false,
     userName: "",
     email: "",
-    password: "",
     photo: "",
     success: false,
     error: "",
@@ -57,14 +55,13 @@ const Login = () => {
   };
 
   return (
-    <div>
-      <div className="text-center my-3">
+    
+      <div className="text-center my-5 py-5 login-area">
         <button onClick={handleGoogleSignIn} className="google-btn">
           <FontAwesomeIcon className="google-icon" icon={faGoogle} /> Continue
           With Google
         </button>
       </div>
-    </div>
   );
 };
 

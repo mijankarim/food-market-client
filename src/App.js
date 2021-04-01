@@ -28,9 +28,9 @@ function App() {
             <Login />
           </Route>
 
-          <Route path="/admin">
+          <PrivateRoute path="/admin">
             <Admin />
-          </Route>
+          </PrivateRoute>
 
           
           <PrivateRoute path="/checkout/:id">

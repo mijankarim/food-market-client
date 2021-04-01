@@ -8,32 +8,34 @@ const Admin = () => {
   let { path, url } = useRouteMatch();
   console.log(path);
   return (
-    <Container>
+    <Container className="bg-light">
       <Row>
-        <Col>
-          <h3>Admin Area</h3>
+        <Col md={3} className="bg-color sidebar">
+          <h3 className="pl-2 pt-3">Food Market</h3>
+          <ul className="py-4 px-2">
+            <li>
+              <Link to={`${url}/manageProduct`}>Manage Product</Link>
+            </li>
+            <li>
+              <Link to={`${url}/addProduct`}>Add Product</Link>
+            </li>
+          </ul>
         </Col>
-      </Row>
-      <Row>
-        <Col>
-          <Link to={`${url}/manageProduct`}>Manage Product</Link>
-          <Link to={`${url}/addProduct`}>Add Product</Link>
+        <Col md={9} className="py-3">
+          <Switch>
+            <Route exact path={`${path}`}>
+              <ManageProduct />
+            </Route>
+
+            <Route exact path={`${path}/addProduct`}>
+              <AddProduct />
+            </Route>
+
+            <Route exact path={`${path}/manageProduct`}>
+              <ManageProduct />
+            </Route>
+          </Switch>
         </Col>
-      </Row>
-      <Row>
-        <Switch>
-          <Route exact path={`${path}`}>
-            <ManageProduct />
-          </Route>
-
-          <Route exact path={`${path}/addProduct`}>
-            <AddProduct />
-          </Route>
-
-          <Route exact path={`${path}/manageProduct`}>
-            <ManageProduct />
-          </Route>
-        </Switch>
       </Row>
     </Container>
   );

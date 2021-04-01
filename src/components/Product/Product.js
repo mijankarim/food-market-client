@@ -10,10 +10,10 @@ const Product = (props) => {
     <div className="product-card shadow my-3 p-4">
       <img src={photo} width="200" alt={name} />
       <h4>{name}</h4>
-      <Row className="mt-3">
-        <Col xs={6}>${price}</Col>
+      <Row className="mt-3 align-items-center text-bold">
+        <Col xs={6} className="price">${price}</Col>
         <Col xs={6}>
-          <Button onClick={handleClick}>Buy Now</Button>
+          <Button className="float-right" onClick={handleClick}>Buy Now</Button>
         </Col>
       </Row>
     </div>

@@ -15,7 +15,7 @@ const Checkout = () => {
         const newProduct = data.find((item) => item._id === id);
         setProduct(newProduct);
       });
-  }, [id]);
+  }, []);
   const handleCheckout = () => {
     const orderDetails = { ...loggedInUser, ...product, orderTime: new Date() };
     console.log("order details", orderDetails)
@@ -24,21 +24,21 @@ const Checkout = () => {
       headers: {
         "Content-Type": "application/json",
       },
-      body: JSON.stringify(orderDetails),
+      body: JSON.stringify(orderDetails)
     })
       .then((res) => res.json())
       .then((data) => {
         if (data) {
-          alert("order succesfull");
+          alert("Order successful");
         }
       });
   };
-  const { name, price, photo } = product;
+  const { name, price } = product;
   return (
-    <Container>
+    <Container className="bg-light py-5">
       <Row>
         <Col>
-          <h3>Check out</h3>
+          <h3 className="mb-4">Check out</h3>
         </Col>
       </Row>
       <Row>
@@ -70,7 +70,7 @@ const Checkout = () => {
       </Row>
       <Row>
         <Col>
-          <Button onClick={handleCheckout}>Checkout</Button>
+          <Button className="food-btn float-right" onClick={handleCheckout}>Checkout</Button>
         </Col>
       </Row>
     </Container>

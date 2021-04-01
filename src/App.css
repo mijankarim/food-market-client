@@ -1,6 +1,94 @@
 .App {
   text-align: center;
 }
-.product-card img{
-  width:100%;
+.product-card img {
+  width: 100%;
+}
+
+body {
+  margin: 0;
+  font-family: "Montserrat", sans-serif !important;
+  background: #6c63ff !important;
+}
+
+.navbar-nav a {
+  color: #fff;
+  padding: 0 20px;
+}
+
+.navbar-nav a:hover,
+.navbar-brand a:hover {
+  color: #ff6584;
+  text-decoration: none;
+}
+
+.navbar-brand a {
+  color: #fff;
+  font-size: 30px !important;
+  font-weight: bold;
+}
+
+.city-btn {
+  background: #ff6584 !important;
+  color: #fff !important;
+  border-color: #ff6584 !important;
+  border-radius: 0.25rem;
+}
+
+.full-width-btn {
+  width: 100%;
+}
+
+.google-btn {
+  background: #ff6584 !important;
+  width: 100%;
+  border-radius: 25px;
+  padding: 5px;
+  background: #fff;
+  border: 1px solid #ff6584;
+  margin-top: 10px;
+  color: #fff;
+}
+
+.google-icon {
+  float: left;
+  margin: 3px 3px 3px 3px;
+  color: #fff;
+}
+
+.product-card {
+  background: #fff;
+}
+
+.product-card .btn,
+.food-btn {
+  background: #ff6584 !important;
+  border: 1px solid #ff6584;
+}
+
+.login-area {
+  max-width: 290px;
+  margin: 0 auto;
+}
+
+.bg-light {
+  background: #fff !important;
+}
+
+.bg-color {
+  background: #ff6584 !important;
+  color: #fff !important;
+}
+
+.price {
+  font-size: 20px;
+}
+.sidebar ul {
+  list-style: none;
+}
+.sidebar ul li {
+  margin-bottom: 15px;
+}
+.sidebar ul li a {
+  color: #fff !important;
 }
