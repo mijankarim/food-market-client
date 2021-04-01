@@ -1,5 +1,4 @@
-import React, { useState } from "react";
-import { useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import { Table, Button, Spinner } from "react-bootstrap";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faTrashAlt, faEdit } from "@fortawesome/free-solid-svg-icons";
@@ -47,7 +46,7 @@ const ManageProduct = () => {
                 <th>Product Name</th>
                 <th>Weight</th>
                 <th>Price</th>
-                <th>Action</th>
+                <th className="text-center">Action</th>
               </tr>
             </thead>
             <tbody>
@@ -56,15 +55,15 @@ const ManageProduct = () => {
                   <td>{product.name}</td>
                   <td>{product.weight} gm</td>
                   <td>${product.price}</td>
-                  <td>
+                  <td className="text-center">
+                    <Button className="food-btn">
+                      <FontAwesomeIcon icon={faEdit} />
+                    </Button>
                     <Button
-                      className="float-right ml-2 food-btn"
+                      className="ml-2 food-btn"
                       onClick={() => handleDelete(`${product._id}`)}
                     >
                       <FontAwesomeIcon icon={faTrashAlt} />
-                    </Button>
-                    <Button className="float-right food-btn">
-                      <FontAwesomeIcon icon={faEdit} />
                     </Button>
                   </td>
                 </tr>

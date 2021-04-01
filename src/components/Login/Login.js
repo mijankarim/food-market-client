@@ -11,8 +11,7 @@ if (firebase.apps.length === 0) {
   firebase.initializeApp(firebaseConfig);
 }
 
-const Login = () => {
-  
+const Login = () => { 
   const [user, setUser] = useState({
     isSignedIn: false,
     userName: "",
