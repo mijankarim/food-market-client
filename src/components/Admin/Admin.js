@@ -3,6 +3,8 @@ import AddProduct from "../AddProduct/AddProduct";
 import { Switch, Route, Link, useRouteMatch } from "react-router-dom";
 import ManageProduct from "../ManageProduct/ManageProduct";
 import { Container, Row, Col } from "react-bootstrap";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faPlus, faList } from "@fortawesome/free-solid-svg-icons";
 
 const Admin = () => {
   let { path, url } = useRouteMatch();
@@ -13,10 +15,10 @@ const Admin = () => {
           <h3 className="pl-2 pt-3">Food Market</h3>
           <ul className="py-4 px-2">
             <li>
-              <Link to={`${url}/manageProduct`}>Manage Product</Link>
+              <Link to={`${url}/manageProduct`}><FontAwesomeIcon icon={faList} /> Manage Product</Link>
             </li>
             <li>
-              <Link to={`${url}/addProduct`}>Add Product</Link>
+              <Link to={`${url}/addProduct`}><FontAwesomeIcon icon={faPlus} /> Add Product</Link>
             </li>
           </ul>
         </Col>

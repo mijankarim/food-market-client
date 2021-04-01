@@ -1,6 +1,8 @@
 import React, { useState } from "react";
 import { useEffect } from "react";
 import { Table, Button, Spinner } from "react-bootstrap";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faTrashAlt, faEdit } from "@fortawesome/free-solid-svg-icons";
 
 const ManageProduct = () => {
   const [products, setProducts] = useState([]);
@@ -14,7 +16,7 @@ const ManageProduct = () => {
       });
   }, []);
 
-  const handleDelete = (event, id) => {
+  const handleDelete = (id) => {
     fetch(`https://quiet-castle-44905.herokuapp.com/delete/${id}`, {
       method: "DELETE",
       headers: {
@@ -24,7 +26,8 @@ const ManageProduct = () => {
       .then((res) => res.json())
       .then((result) => {
         if (result) {
-          event.target.parentNode.parentNode.style.display = "none";
+          const newProducts = products.filter((item) => item._id !== id);
+          setProducts(newProducts);
         }
       });
   };
@@ -56,11 +59,13 @@ const ManageProduct = () => {
                   <td>
                     <Button
                       className="float-right ml-2 food-btn"
-                      onClick={(event) => handleDelete(event, `${product._id}`)}
+                      onClick={() => handleDelete(`${product._id}`)}
                     >
-                      Delete
+                      <FontAwesomeIcon icon={faTrashAlt} />
                     </Button>
-                    <Button className="float-right food-btn">Edit</Button>
+                    <Button className="float-right food-btn">
+                      <FontAwesomeIcon icon={faEdit} />
+                    </Button>
                   </td>
                 </tr>
               ))}
