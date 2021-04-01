@@ -30,7 +30,7 @@ const Orders = () => {
       </Row>
       {isLoading ? (
         <div className="d-flex align-items-center justify-content-center loader">
-          <Spinner animation="grow" variant="success" />
+          <Spinner animation="border" variant="danger" />
         </div>
       ) : (
         <Row>
@@ -40,7 +40,7 @@ const Orders = () => {
                 <tr>
                   <th>Order No.</th>
                   <th>Product Name</th>
-                  <th>Weight</th>
+                  <th>Weight(gm)</th>
                   <th>Order Time</th>
                   <th>Price</th>
                 </tr>

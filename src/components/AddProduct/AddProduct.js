@@ -5,7 +5,7 @@ import { useForm } from "react-hook-form";
 import { Container, Row, Col, Button } from "react-bootstrap";
 
 const AddProduct = () => {
-  const { register, handleSubmit, watch, errors } = useForm();
+  const { register, handleSubmit, errors } = useForm();
   const [imageURL, setImageURL] = useState(null);
 
   const handleImageUpload = (e) => {
@@ -33,7 +33,7 @@ const AddProduct = () => {
     fetch(url, {
       method: "POST",
       headers: {
-        "content-type": "application/json",
+        "Content-Type": "application/json",
       },
       body: JSON.stringify(productData),
     }).then((res) => {
@@ -44,7 +44,7 @@ const AddProduct = () => {
   return (
     <>  
       <form onSubmit={handleSubmit(onSubmit)}>
-        <Container className="">
+        <Container>
         <Row><h3 className="mb-3 ml-3">Add Product</h3></Row>
           <Row className="mb-3">
             <Col>
@@ -83,7 +83,7 @@ const AddProduct = () => {
               <label>Upload Photo</label>
               <br />
               <input
-                class="form-control"
+                className="form-control"
                 name="productPhoto"
                 type="file"
                 onChange={handleImageUpload}

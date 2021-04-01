@@ -1,30 +1,34 @@
 import React, { useEffect, useState, useContext } from "react";
 import { useParams } from "react-router-dom";
 import { UserContext } from "../../App";
-import { Container, Row, Col, Table, Button } from "react-bootstrap";
+import { Container, Row, Col, Table, Button, Spinner } from "react-bootstrap";
 
 const Checkout = () => {
   const [loggedInUser] = useContext(UserContext);
   const { id } = useParams();
-  console.log(id);
   const [product, setProduct] = useState({});
+  const [isLoading, setIsLoading] = useState(true);
+
   useEffect(() => {
-    fetch("https://quiet-castle-44905.herokuapp.com/products")
+    fetch(`https://quiet-castle-44905.herokuapp.com/product/${id}`)
       .then((res) => res.json())
       .then((data) => {
-        const newProduct = data.find((item) => item._id === id);
-        setProduct(newProduct);
+        setProduct(data);
+        setIsLoading(false);
       });
   }, []);
   const handleCheckout = () => {
-    const orderDetails = { ...loggedInUser, ...product, orderTime: new Date() };
-    console.log("order details", orderDetails)
+    const orderDetails = {
+      ...loggedInUser,
+      ...product,
+      orderTime: new Date().toLocaleString(),
+    };
     fetch("https://quiet-castle-44905.herokuapp.com/addOrder", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
       },
-      body: JSON.stringify(orderDetails)
+      body: JSON.stringify(orderDetails),
     })
       .then((res) => res.json())
       .then((data) => {
@@ -41,38 +45,49 @@ const Checkout = () => {
           <h3 className="mb-4">Check out</h3>
         </Col>
       </Row>
-      <Row>
-        <Col>
-          <Table striped bordered hover>
-            <thead>
-              <tr>
-                <th>Description</th>
-                <th>Quantity</th>
-                <th>Price</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td>{name}</td>
-                <td>1</td>
-                <td>${price}</td>
-              </tr>
-            </tbody>
-            <tfoot>
-              <tr>
-                <td>Total</td>
-                <td></td>
-                <td>${price}</td>
-              </tr>
-            </tfoot>
-          </Table>
-        </Col>
-      </Row>
-      <Row>
-        <Col>
-          <Button className="food-btn float-right" onClick={handleCheckout}>Checkout</Button>
-        </Col>
-      </Row>
+
+      {isLoading ? (
+        <div className="d-flex align-items-center justify-content-center loader">
+          <Spinner animation="border" variant="danger" />
+        </div>
+      ) : (
+        <>
+          <Row>
+            <Col>
+              <Table striped bordered hover>
+                <thead>
+                  <tr>
+                    <th>Description</th>
+                    <th>Quantity</th>
+                    <th>Price</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>{name}</td>
+                    <td>1</td>
+                    <td>${price}</td>
+                  </tr>
+                </tbody>
+                <tfoot>
+                  <tr>
+                    <td>Total</td>
+                    <td></td>
+                    <td>${price}</td>
+                  </tr>
+                </tfoot>
+              </Table>
+            </Col>
+          </Row>
+          <Row>
+            <Col>
+              <Button className="food-btn float-right" onClick={handleCheckout}>
+                Checkout
+              </Button>
+            </Col>
+          </Row>
+        </>
+      )}
     </Container>
   );
 };

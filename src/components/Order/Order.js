@@ -7,7 +7,7 @@ const Order = (props) => {
         <tr>
           <td>{parseInt(`${props.index}`) + 1}</td>
           <td>{name}</td>
-          <td>{weight}</td>
+          <td>{weight} gm</td>
           <td>{orderTime}</td>
           <td>$ {price}</td>
         </tr>

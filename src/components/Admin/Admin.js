@@ -6,7 +6,6 @@ import { Container, Row, Col } from "react-bootstrap";
 
 const Admin = () => {
   let { path, url } = useRouteMatch();
-  console.log(path);
   return (
     <Container className="bg-light">
       <Row>

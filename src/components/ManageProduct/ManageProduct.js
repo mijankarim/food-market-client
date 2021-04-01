@@ -14,16 +14,18 @@ const ManageProduct = () => {
       });
   }, []);
 
-  const handleDelete = (id) => {
+  const handleDelete = (event, id) => {
     fetch(`https://quiet-castle-44905.herokuapp.com/delete/${id}`, {
       method: "DELETE",
       headers: {
-        "content-type": "application/json",
+        "Content-Type": "application/json",
       },
     })
       .then((res) => res.json())
-      .then((data) => {
-        console.log(data);
+      .then((result) => {
+        if (result) {
+          event.target.parentNode.parentNode.style.display = "none";
+        }
       });
   };
 
@@ -31,7 +33,7 @@ const ManageProduct = () => {
     <>
       {isLoading ? (
         <div className="d-flex align-items-center justify-content-center loader">
-          <Spinner animation="grow" variant="success" />
+          <Spinner animation="border" variant="danger" />
         </div>
       ) : (
         <>
@@ -54,7 +56,7 @@ const ManageProduct = () => {
                   <td>
                     <Button
                       className="float-right ml-2 food-btn"
-                      onClick={() => handleDelete(`${product._id}`)}
+                      onClick={(event) => handleDelete(event, `${product._id}`)}
                     >
                       Delete
                     </Button>

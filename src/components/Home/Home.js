@@ -20,15 +20,21 @@ const Home = () => {
     <Container className="pt-3 pb-5 mb-5">
       {isLoading ? (
         <div className="d-flex align-items-center justify-content-center loader">
-          <Spinner animation="grow" variant="success" />
+          <Spinner animation="border" variant="danger" />
         </div>
       ) : (
         <Row>
-          {products.map((product) => (
-            <Col xs={12} sm={6} md={4} key={product._id}>
-              <Product product={product} />
-            </Col>
-          ))}
+          {products.length === 0 ? (
+            <div className="text-light text-center w-100 py-5">
+              <h3>No products Found</h3>
+            </div>
+          ) : (
+            products.map((product) => (
+              <Col xs={12} sm={6} md={4} key={product._id}>
+                <Product product={product} />
+              </Col>
+            ))
+          )}
         </Row>
       )}
     </Container>
