@@ -29,7 +29,7 @@ const Checkout = () => {
       headers: {
         "Content-Type": "application/json"
       },
-      body: JSON.stringify(orderDetails),
+      body: JSON.stringify(orderDetails)
     })
       .then((res) => res.json())
       .then((data) => {
