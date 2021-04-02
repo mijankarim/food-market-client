@@ -15,10 +15,7 @@ const Login = () => {
   const [user, setUser] = useState({
     isSignedIn: false,
     userName: "",
-    email: "",
-    photo: "",
-    success: false,
-    error: "",
+    email: ""
   });
 
   const [loggedInUser, setLoggedInUser] = useContext(UserContext);
@@ -53,8 +50,7 @@ const Login = () => {
       });
   };
 
-  return (
-    
+  return ( 
       <div className="text-center my-5 py-5 login-area">
         <button onClick={handleGoogleSignIn} className="google-btn">
           <FontAwesomeIcon className="google-icon" icon={faGoogle} /> Continue

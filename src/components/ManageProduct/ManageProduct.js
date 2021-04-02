@@ -13,7 +13,7 @@ const ManageProduct = () => {
         setProducts(data);
         setIsLoading(false);
       });
-  }, []);
+  }, [products]);
 
   const handleDelete = (id) => {
     fetch(`https://quiet-castle-44905.herokuapp.com/delete/${id}`, {
@@ -24,10 +24,7 @@ const ManageProduct = () => {
     })
       .then((res) => res.json())
       .then((result) => {
-        if (result) {
-          const newProducts = products.filter((item) => item._id !== id);
-          setProducts(newProducts);
-        }
+        
       });
   };
 
