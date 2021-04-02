@@ -6,6 +6,7 @@ import { faTrashAlt, faEdit } from "@fortawesome/free-solid-svg-icons";
 const ManageProduct = () => {
   const [products, setProducts] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
+  const [deleted, setDeleted] = useState(false);
   useEffect(() => {
     fetch("https://quiet-castle-44905.herokuapp.com/products")
       .then((res) => res.json())
@@ -24,7 +25,9 @@ const ManageProduct = () => {
     })
       .then((res) => res.json())
       .then((result) => {
-        
+        if(result){
+          setDeleted(true);
+        } 
       });
   };
 
@@ -67,6 +70,7 @@ const ManageProduct = () => {
               ))}
             </tbody>
           </Table>
+          {deleted && <p className="text-success w-100 text-center my-3">Product deleted Successfully</p>}
         </>
       )}
     </>

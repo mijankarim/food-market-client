@@ -9,7 +9,7 @@ import { faPlus, faList } from "@fortawesome/free-solid-svg-icons";
 const Admin = () => {
   let { path, url } = useRouteMatch();
   return (
-    <Container className="bg-light">
+    <Container className="bg-light mb-5">
       <Row>
         <Col md={3} className="bg-color sidebar">
           <h3 className="pl-2 pt-3">Food Market</h3>
