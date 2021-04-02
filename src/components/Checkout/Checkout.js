@@ -27,7 +27,7 @@ const Checkout = () => {
     fetch("https://quiet-castle-44905.herokuapp.com/addOrder", {
       method: "POST",
       headers: {
-        "Content-Type": "application/json",
+        "Content-Type": "application/json"
       },
       body: JSON.stringify(orderDetails),
     })
