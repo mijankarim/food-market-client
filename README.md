@@ -1,8 +1,14 @@
 # Food Market Mern Stack App
 
-Food Market is a MERN stack app using React js, Express js, firebase authentication and mongodb.
+### [Live Site Link](https://food-market-ccf50.web.app/)
 
-## React package used on this app
+Food Market is a MERN stack single page app where user can order the products . Admin can add new products from dashboard and can manage all products from Dashboard.
+
+## Built with
+* Node Js
+* Express
+* MongoDB
+* React Js
 * React Router
 * React Bootstrap
 * Axios
@@ -10,6 +16,6 @@ Food Market is a MERN stack app using React js, Express js, firebase authenticat
 * React Hook Form
 * Firebase
 
-### [Live Site Link](https://food-market-ccf50.web.app/)
+
 
 
